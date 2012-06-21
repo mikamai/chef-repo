@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: apt
-# Recipe:: proxy
+# Resource:: preference
 #
-# Copyright 2008-2009, Opscode, Inc.
+# Copyright 2010-2011, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,19 +16,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package "apt-proxy" do 
-  action :install
+
+actions :add, :remove
+
+def initialize(*args)
+  super
+  @action = :add
 end
 
-service "apt-proxy" do
-  supports :restart => true, :status => false
-  action [ :enable, :start ]
-end
-
-remote_file "/etc/apt-proxy/apt-proxy-v2.conf" do
-  source "apt-proxy-v2.conf"
-  owner "root"
-  group "root"
-  mode 0644
-  notifies :restart, resources(:service => "apt-proxy")
-end
+attribute :package_name, :kind_of => String, :name_attribute => true
+attribute :pin, :kind_of => String
+attribute :pin_priority, :kind_of => String
