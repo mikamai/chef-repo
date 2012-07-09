@@ -7,17 +7,6 @@ cookbook 'chef-client'
 cookbook 'build-essential'
 cookbook 'apt'
 
-# cookbook 'apache2', '>= 1.0.0'
-
-# cookbook 'rvm',
-#   :git => 'https://github.com/fnichol/chef-rvm'
-
-# cookbook 'postgresql',
-#   :git => 'https://github.com/findsyou/cookbooks',
-#   :ref => 'postgresql-improvements'
-cookbook 'rvm',
-  :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'
-cookbook 'rvm_passenger',
-:git => 'https://github.com/fnichol/chef-rvm_passenger', :ref => 'v0.8.2'
-
+cookbook 'rvm', :git => 'git://github.com/fnichol/chef-rvm.git'
+cookbook 'rvm_passenger', :git => 'https://github.com/fnichol/chef-rvm_passenger'
 cookbook 'nginx'
