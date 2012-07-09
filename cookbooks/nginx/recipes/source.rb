@@ -90,7 +90,7 @@ bash "compile_nginx_source" do
       #        node.automatic_attrs['nginx']['version'] == node['nginx']['version'] &&
       #          node.automatic_attrs['nginx']['configure_arguments'].sort == configure_flags.sort
       node['nginx']['version'] == node['nginx']['version'] &&
-      node['nginx']['configure_arguments'].sort == configure_flags.sort
+      (node['nginx']['configure_arguments'] || []).sort == configure_flags.sort
   end
 end
 
